@@ -18,7 +18,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-rlu_lib = { path = "path/to/your/rlu_lib" }
+rlu_lib = { git = "https://github.com/g-alexander/lru_lib.git" }
 ```
 
 ## 🛠 Usage

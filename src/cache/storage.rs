@@ -44,6 +44,11 @@ where
         self.data.remove(key)
     }
 
+    /// Проверяет наличие ключа в хранилище.
+    pub fn contains(&self, key: &K) -> bool {
+        self.data.contains_key(key)
+    }
+
     /// Очищает всё хранилище.
     pub fn clear(&mut self) {
         self.data.clear();

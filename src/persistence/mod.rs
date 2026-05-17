@@ -1,5 +1,7 @@
 pub mod json_adapter;
+pub mod binary_adapter;
 pub use json_adapter::JsonPersistenceAdapter;
+pub use binary_adapter::BinaryPersistenceAdapter;
 
 use crate::error::Result;
 use async_trait::async_trait;

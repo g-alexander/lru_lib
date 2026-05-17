@@ -23,6 +23,10 @@ where
     fn remove(&self, key: &K) -> Result<()>;
     /// Clears all entries from the cache.
     fn clear(&self) -> Result<()>;
+    /// Checks if a key exists in the cache.
+    fn contains(&self, key: &K) -> Result<bool>;
+    /// Returns the number of elements in the cache.
+    fn len(&self) -> usize;
 }
 
 /// A thread-safe LRU cache implementation supporting both capacity-based and TTL-based eviction.
@@ -142,5 +146,18 @@ where
         storage.clear();
         *policy = LruPolicy::new();
         Ok(())
+    }
+
+    fn contains(&self, key: &K) -> Result<bool>
+    where
+        K: Hash + Eq + Clone,
+    {
+        let storage = self.storage.read();
+        Ok(storage.contains(key))
+    }
+
+    fn len(&self) -> usize {
+        let storage = self.storage.read();
+        storage.len()
     }
 }
